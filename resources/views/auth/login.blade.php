@@ -37,32 +37,47 @@
                   <form class="form" action="{{url('/post/auth')}}" method="POST" class="user">
                     @csrf
                     <div class="form-group">
-                      <input type="email" class="form-control" placeholder="Email" name="email">
+                      <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email">
+                      @error('email')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control" placeholder="Password" name="password">
+                      <input type="password" class="form-control signin-password @error('password') is-invalid @enderror" placeholder="Password" name="password">
+                      @error('password')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
                     </div>
-                    <div class="form-group">
-                      <div class="custom-control custom-checkbox small" style="line-height: 1.5rem;">
-                        <input type="checkbox" class="custom-control-input" id="customCheck">
-                        <label class="custom-control-label" for="customCheck">Remember
-                        Me</label>
+
+                    <div class="row justify-content-between">
+                     <div class="col-4">
+                      <div class="form-group">
+                        <div class="custom-control custom-checkbox small" style="line-height: 1.5rem;">
+                          <input type="checkbox" class="custom-control-input" id="customCheck">
+                          <label class="custom-control-label" for="customCheck">Show password</label>
+                        </div>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-block text-white" 
-                      style="background: #0CA8B4;">
-                      <div class="spinner"><i role="status" class="spinner-border spinner-border-sm"></i></div>
-                      <div class="hide-text">Login</div>
-                    </button>
+
+                    <div class="col-4">
+                      <a href="">
+                      forgot password?</a>
+                    </div>
                   </div>
-                </form>
-                <hr>
-                <div class="text-center">
-                  <a class="font-weight-bold small" href="register.html">Create an Account!</a>
+
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-block text-white" 
+                    style="background: #0CA8B4;">
+                    <div class="spinner"><i role="status" class="spinner-border spinner-border-sm"></i></div>
+                    <div class="hide-text">Login</div>
+                  </button>
                 </div>
-                <div class="text-center">
-                </div>
+              </form>
+              <hr>
+              <div class="text-center">
+                <a class="font-weight-bold small" href="register.html">Create an Account!</a>
+              </div>
+              <div class="text-center">
               </div>
             </div>
           </div>
@@ -70,6 +85,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 <!-- Login Content -->
 <script src="{{url('admin/vendor/jquery/jquery.min.js')}}"></script>
@@ -87,6 +103,16 @@
       $('.hide-text').hide();
     })
   })();
+
+  $(document).ready(function(){   
+    $('#customCheck').click(function(){
+      if($(this).is(':checked')){
+        $('.signin-password').attr('type','text');
+      }else{
+        $('.signin-password').attr('type','password');
+      }
+    });
+  });
 </script>
 
 </html>

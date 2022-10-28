@@ -14,7 +14,7 @@
 					Add
 				</button>-->
 			</div>
-
+			<!--<a href="" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#add">add</a>-->
 			<div class="table-responsive p-3">
 				<table class="table align-items-center table-flush table-hover" id="dataTableHover">
 					<thead class="thead-light">
@@ -42,15 +42,14 @@
 	</div>
 </div>
 
-
-<div class="modal fade" id="exampleModal-{{$x->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Edit</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
-			<form class="form" action="{{url('/update/image/about/'.$x->id)}}" method="post" enctype="multipart/form-data">
+			<form class="form" action="{{url('/insert/image/about')}}" method="post" enctype="multipart/form-data">
 				<div class="modal-body">
 					@csrf
 					<input type="file" name="file" class="form-control">
@@ -67,4 +66,31 @@
 		</div>
 	</div>
 </div>
+
+@foreach($data as $e)
+<div class="modal fade" id="exampleModal-{{$e->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form class="form" action="{{url('/update/image/about/'.$e->id)}}" method="post" enctype="multipart/form-data">
+				<div class="modal-body">
+					@csrf
+					<input type="file" name="file" class="form-control">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">
+						<div class="spinner"><i role="status" class="spinner-border spinner-border-sm"></i></div>
+						<div class="hide-text">Update</div>
+					</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
+@endforeach
 @endsection

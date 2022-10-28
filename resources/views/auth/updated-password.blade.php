@@ -18,8 +18,7 @@
 
 			<div class="mb-3">
 				<label for="password" class="form-label">new password</label>
-				<input type="password" class="form-control @error('password') is-invalid @enderror" 
-				name="password" id="password">
+				<input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password">
 
 				@error('password')
 				<div class="invalid-feedback">{{ $message }}</div>

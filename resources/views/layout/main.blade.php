@@ -143,6 +143,13 @@
           </a>
         </li>
 
+         <li class="nav-item">
+          <a class="nav-link" href="{{url('/master/client')}}">
+            <i class="bi bi-people-fill"></i>
+            <span>Master Client</span>
+          </a>
+        </li>
+
         <hr class="sidebar-divider">
         <div class="sidebar-heading">
           Contact
@@ -185,116 +192,128 @@
 
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
-      Message
+      Article
     </div>
 
     <li class="nav-item">
-      <a class="nav-link" href="{{url('/message')}}">
-       <i class="bi bi-chat-right-text"></i>
-        <span>Message</span>
+      <a class="nav-link" href="{{url('/master/articel')}}">
+       <i class="bi bi-card-text"></i>
+       <span>Master Article</span>
+     </a>
+   </li>
+
+   <hr class="sidebar-divider">
+   <div class="sidebar-heading">
+    Message
+  </div>
+
+  <li class="nav-item">
+    <a class="nav-link" href="{{url('/message')}}">
+     <i class="bi bi-chat-right-text"></i>
+     <span>Message</span>
+   </a>
+ </li>
+
+
+ <hr class="sidebar-divider">
+ <div class="sidebar-heading">
+  Fiturs
+</div>
+
+<li class="nav-item">
+  <a class="nav-link" href="{{url('/updated/password')}}">
+    <i class="fas fa-fw fa-lock"></i>
+    <span>Updated Password</span>
+  </a>
+</li>
+<hr class="sidebar-divider">
+<div class="version" id="version-ruangadmin"></div>
+</ul>
+<!-- Sidebar -->
+<div id="content-wrapper" class="d-flex flex-column">
+  <div id="content">
+    <!-- TopBar -->
+    <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top" 
+    style="background: #0CA8B4;">
+    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+      <i class="fa fa-bars"></i>
+    </button>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-search fa-fw"></i>
       </a>
-    </li>
-
-
-    <hr class="sidebar-divider">
-    <div class="sidebar-heading">
-      Fiturs
-    </div>
-
-    <li class="nav-item">
-      <a class="nav-link" href="{{url('/updated/password')}}">
-        <i class="fas fa-fw fa-lock"></i>
-        <span>Updated Password</span>
-      </a>
-    </li>
-    <hr class="sidebar-divider">
-    <div class="version" id="version-ruangadmin"></div>
-  </ul>
-  <!-- Sidebar -->
-  <div id="content-wrapper" class="d-flex flex-column">
-    <div id="content">
-      <!-- TopBar -->
-      <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top" 
-      style="background: #0CA8B4;">
-      <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
-        <i class="fa fa-bars"></i>
-      </button>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-search fa-fw"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-        aria-labelledby="searchDropdown">
-        <form class="navbar-search">
-          <div class="input-group">
-            <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
-            aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
-            <div class="input-group-append">
-              <button class="btn btn-primary" type="button">
-                <i class="fas fa-search fa-sm"></i>
-              </button>
-            </div>
+      <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+      aria-labelledby="searchDropdown">
+      <form class="navbar-search">
+        <div class="input-group">
+          <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
+          aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button">
+              <i class="fas fa-search fa-sm"></i>
+            </button>
           </div>
-        </form>
-      </div>
-    </li>
-
-
-    @php $locale = session()->get('locale'); @endphp
-    <li class="nav-item dropdown">
-      <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-      @switch($locale)
-      @case('en')
-      <img src="{{asset('admin/bendera/ind.png')}}" width="25px"> English
-      @break
-      @case('in')
-      <img src="{{asset('admin/bendera/ind.png')}}" width="25px">Indonesia
-      @break
-      @default
-      <img src="{{asset('admin/bendera/eng.png')}}" width="25px"> English
-      @endswitch
-      <span class="caret"></span>
-    </a>
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="lang/en"><img src="{{asset('admin/bendera/eng.png')}}" width="25px"> English</a>
-      <a class="dropdown-item" href="lang/in"><img src="{{asset('admin/bendera/ind.png')}}" width="25px">Indonesia</a>
+        </div>
+      </form>
     </div>
   </li>
-  <div class="topbar-divider d-none d-sm-block"></div>
-  <li class="nav-item dropdown no-arrow">
-    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-    aria-haspopup="true" aria-expanded="false">
-    @if(Auth::user()->avatar==null) 
-    <img class="img-profile rounded-circle" src="{{url('admin/img/boy.png')}}" style="max-width: 60px">
-    @else
-    <img class="img-profile rounded-circle" src="{{url('file_avatar/'.auth()->user()->avatar)}}" style="max-width: 60px">
-    @endif
-    <span class="ml-2 d-none d-lg-inline text-white small">{{Auth::user()->name}}</span>
+
+
+  @php $locale = session()->get('locale'); @endphp
+  <li class="nav-item dropdown">
+    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+    @switch($locale)
+    @case('en')
+    <img src="{{asset('admin/bendera/ind.png')}}" width="25px"> English
+    @break
+    @case('in')
+    <img src="{{asset('admin/bendera/ind.png')}}" width="25px">Indonesia
+    @break
+    @default
+    <img src="{{asset('admin/bendera/eng.png')}}" width="25px"> English
+    @endswitch
+    <span class="caret"></span>
   </a>
-  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit-profil">
-     @if(Auth::user()->avatar==null) 
-     <img class="img-profile rounded-circle" src="{{url('admin/img/boy.png')}}" style="max-width: 30px">
-     @else
-     <img class="img-profile rounded-circle" src="{{url('file_avatar/'.auth()->user()->avatar)}}" style="max-width: 30px">
-     @endif
-     Avatar
-   </a>
-   <a class="dropdown-item" href="{{url('/user/profil')}}">
-    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-    User Profil
-  </a>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="lang/en"><img src="{{asset('admin/bendera/eng.png')}}" width="25px"> English</a>
+    <a class="dropdown-item" href="lang/in"><img src="{{asset('admin/bendera/ind.png')}}" width="25px">Indonesia</a>
+  </div>
+</li>
+<div class="topbar-divider d-none d-sm-block"></div>
+<li class="nav-item dropdown no-arrow">
+  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+  aria-haspopup="true" aria-expanded="false">
+  @if(Auth::user()->avatar==null) 
+  <img class="img-profile rounded-circle" src="{{url('admin/img/boy.png')}}" style="max-width: 60px">
+  @else
+  <img class="img-profile rounded-circle" src="{{url('file_avatar/'.auth()->user()->avatar)}}" style="max-width: 60px">
+  @endif
+  <span class="ml-2 d-none d-lg-inline text-white small">{{Auth::user()->name}}</span>
+</a>
+<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit-profil">
+   @if(Auth::user()->avatar==null) 
+   <img class="img-profile rounded-circle" src="{{url('admin/img/boy.png')}}" style="max-width: 30px">
+   @else
+   <img class="img-profile rounded-circle" src="{{url('file_avatar/'.auth()->user()->avatar)}}" style="max-width: 30px">
+   @endif
+   Avatar
+ </a>
+ <a class="dropdown-item" href="{{url('/user/profil')}}">
+  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+  User Profil
+</a>
 
 
 
-  <div class="dropdown-divider"></div>
-  <a class="dropdown-item btn1" href="{{url('logout')}}">
-    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-    Logout
-  </a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item btn1" href="{{url('logout')}}">
+  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+  Logout
+</a>
 </div>
 </li>
 </ul>
@@ -366,7 +385,8 @@
     </div>
   </div>
 </div>
-
+<script type="text/javascript" src="{{url('admin/tinymce/js/tinymce/plugins/codesample/plugin.min.js')}}"></script>
+<script type="text/javascript" src="{{url('admin/tinymce/js/tinymce/tinymce.min.js')}}"></script>
 <script src="{{url('admin/vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{url('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{url('admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
@@ -401,6 +421,24 @@
     }).then((result) => {
       if (result.isConfirmed) {
         window.location = logout;
+      }
+    })
+  })
+
+  $(".btn2").click(function(e){
+    e.preventDefault();
+    var hapus = $(this).attr('href');
+    Swal.fire({
+      title: 'sure',
+      text: "the article will be deleted",
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location = hapus;
       }
     })
   })
@@ -444,6 +482,88 @@
     document.getElementById("uploadFile").value = this.value;
   };
 
+//tinymce
+tinymce.init({
+  selector: 'textarea#article',
+  plugins: 'image code',
+  toolbar: 'undo redo | link image | code',
+   plugins: 'pagebreak',
+  
+
+  toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+  toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | inserttime preview | forecolor backcolor",
+  toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+
+  menubar: false,
+  toolbar_items_size: 'small',
+
+  style_formats: [
+  {title: 'Bold text', inline: 'b'},
+  {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+  {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+  {title: 'Example 1', inline: 'span', classes: 'example1'},
+  {title: 'Example 2', inline: 'span', classes: 'example2'},
+  {title: 'Table styles'},
+  {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+  ],
+
+  templates: [
+  {title: 'Test template 1', content: 'Test 1'},
+  {title: 'Test template 2', content: 'Test 2'}
+  ],
+
+
+  /* enable title field in the Image dialog*/
+  image_title: true,
+  /* enable automatic uploads of images represented by blob or data URIs*/
+  automatic_uploads: true,
+  /*
+    URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
+    images_upload_url: 'postAcceptor.php',
+    here we add custom filepicker only to Image dialog
+    */
+    file_picker_types: 'image',
+    /* and here's our custom image picker*/
+    file_picker_callback: function (cb, value, meta) {
+      var input = document.createElement('input');
+      input.setAttribute('type', 'file');
+      input.setAttribute('accept', 'image/*');
+
+    /*
+      Note: In modern browsers input[type="file"] is functional without
+      even adding it to the DOM, but that might not be the case in some older
+      or quirky browsers like IE, so you might want to add it to the DOM
+      just in case, and visually hide it. And do not forget do remove it
+      once you do not need it anymore.
+      */
+
+      input.onchange = function () {
+        var file = this.files[0];
+
+        var reader = new FileReader();
+        reader.onload = function () {
+        /*
+          Note: Now we need to register the blob in TinyMCEs image blob
+          registry. In the next release this part hopefully won't be
+          necessary, as we are looking to handle it internally.
+          */
+          var id = 'blobid' + (new Date()).getTime();
+          var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+          var base64 = reader.result.split(',')[1];
+          var blobInfo = blobCache.create(id, file, base64);
+          blobCache.add(blobInfo);
+
+          /* call the callback and populate the Title field with the file name */
+          cb(blobInfo.blobUri(), { title: file.name });
+        };
+        reader.readAsDataURL(file);
+      };
+
+      input.click();
+    },
+    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+
+  });
 </script>
 </body>
 @include('sweetalert::alert')

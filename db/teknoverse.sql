@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Okt 2022 pada 05.28
+-- Waktu pembuatan: 28 Okt 2022 pada 08.24
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -39,7 +39,7 @@ CREATE TABLE `about` (
 --
 
 INSERT INTO `about` (`id`, `file`, `created_at`, `updated_at`) VALUES
-(1, '1665557659.png', '2022-10-07 01:11:01', '2022-10-11 23:54:19');
+(1, '1666765650.png', '2022-10-25 23:26:36', '2022-10-25 23:27:30');
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,32 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`id`, `address`, `created_at`, `updated_at`) VALUES
-(1, 'Ruko Suncity Square, Blok A No . 43,\r\nBekasi Selatan Jawa Barat 17141 - Indonesia', '2022-10-10 20:03:30', '2022-10-10 20:07:05');
+(1, 'Ruko Suncity Square, Blok A No . 43, Bekasi Selatan Jawa Barat 17141 - Indonesia', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `articel`
+--
+
+CREATE TABLE `articel` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `no` int(11) NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `articel`
+--
+
+INSERT INTO `articel` (`id`, `no`, `title`, `description`, `image`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Membuat Seeder', '<p>Sebelum berlanjut ke topik utama yaitu membuat seeder, terlebih dahulu kita akan membuat table baru untuk menampung seeder :<br>seperti topik membuat table migration di artikel sebelumnya, kali ini kita akan membuat migration untuk table dengan nama table&nbsp;<code class=\"language-html highlighter-rouge\">employees</code>, kita lakukan migration dari terminal :</p>', '1666767923.png', '2022-10-26 00:05:23', '2022-10-26 00:05:23'),
+(2, 2, NULL, '<p>akan terbentuk file baru di direktori&nbsp;<code class=\"language-html highlighter-rouge\">database/migration/2021_01_13_create_employees_table.php</code>, kita buka file migration employees :</p>', '1666768007.png', '2022-10-26 00:06:47', '2022-10-26 00:06:47'),
+(3, 3, NULL, '<p>bisa dilihat di mysql atau di phpmyadmin kalian, akan ada table baru dengan nama table&nbsp;<code class=\"language-html highlighter-rouge\">employees</code>&nbsp;telah terbentuk, tapi kita lupa menambahkan field/column lainnya. Ok kita ubah terlebih dahulu code diatas, untuk menambahkan beberapa field/column baru di table&nbsp;<code class=\"language-html highlighter-rouge\">employees</code>&nbsp;sehingga code tersebut menjadi seperti ini :</p>', NULL, '2022-10-26 00:07:08', '2022-10-26 00:07:08');
 
 -- --------------------------------------------------------
 
@@ -79,8 +104,31 @@ CREATE TABLE `call_us` (
 --
 
 INSERT INTO `call_us` (`id`, `no_telepon`, `created_at`, `updated_at`) VALUES
-(1, '087789596859', '2022-10-10 20:57:53', '2022-10-10 21:02:45'),
-(2, '087789596869', '2022-10-10 20:58:16', '2022-10-10 20:58:16');
+(1, '087789596859', NULL, '2022-10-25 23:40:57'),
+(2, '087789596869', NULL, '2022-10-25 23:41:25');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `client`
+--
+
+CREATE TABLE `client` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `client`
+--
+
+INSERT INTO `client` (`id`, `file`, `created_at`, `updated_at`) VALUES
+(1, '1666769877.png', '2022-10-26 00:37:57', '2022-10-26 00:37:57'),
+(2, '1666769976.png', '2022-10-26 00:39:36', '2022-10-26 00:39:36'),
+(3, '1666770587.png', '2022-10-26 00:49:47', '2022-10-26 00:49:47'),
+(4, '1666770740.jpg', '2022-10-26 00:52:20', '2022-10-26 00:52:20');
 
 -- --------------------------------------------------------
 
@@ -100,7 +148,7 @@ CREATE TABLE `email_us` (
 --
 
 INSERT INTO `email_us` (`id`, `email`, `created_at`, `updated_at`) VALUES
-(1, 'marketing@teknoverse.id', '2022-10-10 20:22:19', '2022-10-10 20:25:23');
+(1, 'marketing@teknoverse.id', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -136,7 +184,7 @@ CREATE TABLE `maps` (
 --
 
 INSERT INTO `maps` (`id`, `url`, `created_at`, `updated_at`) VALUES
-(1, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1224248365734!2d106.9930067643408!3d-6.247594162911912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698b603b9015fb%3A0x706b4c77b8f71794!2sRuko%20Suncity%20Square!5e0!3m2!1sid!2sid!4v1665476141384!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade', NULL, '2022-10-11 01:16:05');
+(1, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.122424836583!2d106.99300676434083!3d-6.247594162911912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698b603b9015fb%3A0x706b4c77b8f71794!2sRuko%20Suncity%20Square!5e0!3m2!1sid!2sid!4v1666767367758!5m2!1sid!2sid', NULL, '2022-10-25 23:57:08');
 
 -- --------------------------------------------------------
 
@@ -146,20 +194,10 @@ INSERT INTO `maps` (`id`, `url`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `message` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subject` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `message`
---
-
-INSERT INTO `message` (`id`, `name`, `email`, `subject`, `message`, `created_at`, `updated_at`) VALUES
-(2, 'Ahmad Haidar', 'haidarahmad728@gmail.com', 'subject pertama', 'pesan pertama', '2022-10-14 02:02:35', '2022-10-14 02:02:35');
 
 -- --------------------------------------------------------
 
@@ -182,15 +220,17 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2022_10_07_074416_about', 2),
-(6, '2022_10_10_022131_service', 3),
-(7, '2022_10_10_031148_vision', 4),
-(8, '2022_10_11_024305_address', 5),
-(9, '2022_10_11_024416_email-us', 5),
-(10, '2022_10_11_024514_call-us', 5),
-(11, '2022_10_11_024655_time-work', 5),
-(12, '2022_10_11_075140_url', 6),
-(13, '2022_10_14_083458_message', 7);
+(5, '2022_10_07_074416_about', 1),
+(6, '2022_10_10_022131_service', 1),
+(7, '2022_10_10_031148_vision', 1),
+(8, '2022_10_11_024305_address', 1),
+(9, '2022_10_11_024416_email-us', 1),
+(10, '2022_10_11_024514_call-us', 1),
+(11, '2022_10_11_024655_time-work', 1),
+(12, '2022_10_11_075140_url', 1),
+(13, '2022_10_14_083458_message', 1),
+(14, '2022_10_18_020329_article', 1),
+(15, '2022_10_26_072742_client', 2);
 
 -- --------------------------------------------------------
 
@@ -240,7 +280,7 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`id`, `file`, `created_at`, `updated_at`) VALUES
-(1, '1665369654.png', '2022-10-09 19:31:30', '2022-10-09 19:40:54');
+(1, '1666765956.png', '2022-10-25 23:32:36', '2022-10-25 23:32:36');
 
 -- --------------------------------------------------------
 
@@ -250,8 +290,8 @@ INSERT INTO `service` (`id`, `file`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `time_work` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `jam_masuk` time NOT NULL,
-  `jam_keluar` time NOT NULL,
+  `jam_masuk` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jam_keluar` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -261,7 +301,7 @@ CREATE TABLE `time_work` (
 --
 
 INSERT INTO `time_work` (`id`, `jam_masuk`, `jam_keluar`, `created_at`, `updated_at`) VALUES
-(1, '08:00:00', '16:00:00', '2022-10-10 23:58:15', '2022-10-11 00:09:42');
+(1, '08:00', '16:00', NULL, '2022-10-25 23:49:29');
 
 -- --------------------------------------------------------
 
@@ -273,9 +313,9 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_tlp` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_tlp` bigint(12) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -284,8 +324,8 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `no_tlp`, `password`, `avatar`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'teknoverse@gmail.com', '087789596859', '$2y$10$Wov0lkI3M0OG.C6ldR3Eg.N3R2PAIGCaCnc2FE9ResB2cUJZ3OSsW', '1665545757,png', '2022-10-07 00:03:56', '2022-10-12 00:10:39');
+INSERT INTO `users` (`id`, `name`, `email`, `avatar`, `password`, `no_tlp`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'teknoverse@gmail.com', '1666766372,png', '$2y$10$/li2padwgjr4GP.Tr8hcnO/0N1mW0N9QS4kMfB6T8bF7PVWFFr66O', NULL, '2022-10-25 23:11:59', '2022-10-25 23:39:32');
 
 -- --------------------------------------------------------
 
@@ -305,7 +345,7 @@ CREATE TABLE `vision` (
 --
 
 INSERT INTO `vision` (`id`, `file`, `created_at`, `updated_at`) VALUES
-(1, '1665372240.png', '2022-10-09 20:20:20', '2022-10-09 20:24:00');
+(1, '1666766131.png', NULL, '2022-10-25 23:35:31');
 
 --
 -- Indexes for dumped tables
@@ -324,9 +364,21 @@ ALTER TABLE `address`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `articel`
+--
+ALTER TABLE `articel`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `call_us`
 --
 ALTER TABLE `call_us`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `client`
+--
+ALTER TABLE `client`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -416,10 +468,22 @@ ALTER TABLE `address`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT untuk tabel `articel`
+--
+ALTER TABLE `articel`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT untuk tabel `call_us`
 --
 ALTER TABLE `call_us`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `client`
+--
+ALTER TABLE `client`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `email_us`
@@ -443,13 +507,13 @@ ALTER TABLE `maps`
 -- AUTO_INCREMENT untuk tabel `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`

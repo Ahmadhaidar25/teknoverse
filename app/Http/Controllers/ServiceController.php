@@ -43,4 +43,34 @@ class ServiceController extends Controller
      $post->update();
      return back();
  }
+
+  public function insert_image_service(Request $request)
+    {
+     $request->validate([
+        'file'=>'required',
+    ]);
+
+
+     $post = new service;
+
+     if ($request->hasfile('file')) 
+     {
+         $destination = '/file/'.$post->file;
+
+         if (File::exists($destination)) 
+         {
+             File::delete($destination);
+         }
+
+         $file = $request->file('file');
+         $extention = $file->getClientOriginalExtension();
+         $filename = time().'.'.$extention;
+         $file->move('file_service', $filename);
+         $post->file = $filename;
+     }
+     toast('Success update','success');
+
+     $post->save();
+     return back();
+ }
 }

@@ -52,14 +52,15 @@
 </div>
 </div>
 
-<div class="modal fade" id="edit-{{$x->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach($data as $e)
+<div class="modal fade" id="edit-{{$e->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form class="form" action="{{url('/update/map/'.$x->id)}}" method="post">
+            <form class="form" action="{{url('/update/map/'.$e->id)}}" method="post">
                 <div class="modal-body">
                     @csrf
                     <div class="mb-3">
@@ -81,4 +82,5 @@
         </div>
     </div>
 </div>
+@endforeach
 @endsection

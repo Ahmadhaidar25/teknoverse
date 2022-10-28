@@ -45,15 +45,15 @@
 	</div>
 </div>
 
-
-<div class="modal fade" id="edit-{{$x->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach($data as $e)
+<div class="modal fade" id="edit-{{$e->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Edit</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
-			<form class="form" action="{{url('/update/image/vision/'.$x->id)}}" method="post" enctype="multipart/form-data">
+			<form class="form" action="{{url('/update/image/vision/'.$e->id)}}" method="post" enctype="multipart/form-data">
 				<div class="modal-body">
 					@csrf
 					<input type="file" name="file" class="form-control">
@@ -71,4 +71,5 @@
 			</div>
 		</div>
 	</div>
+	@endforeach
 	@endsection
